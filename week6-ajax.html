@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Actors Giphy</title>
+</head>
+<body>
+  
+  <div id="buttons"></div>
+  <div id="gifsAppearHere"></div>
+  <div id="addActors">
+  </div>
+
+
+<script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
+<script type="text/javascript">
+
+  var actorArray = ["arnold schwarzenegger", "michael j fox", "tom cruise", "bruce willis", "leonardo dicaprio"];
+
+  for(i=0;i<actorArray.length;i++){
+    var $a = $('<button>') 
+    $a.attr('data-name', actorArray[i]); 
+    $a.text(actorArray[i]); 
+    $('#buttons').append($a); 
+  }
+
+  $('button').on('click', function(){
+    $('#gifsAppearHere').empty();
+    var p= $(this).data('name');
+    var queryURL = 'http://api.giphy.com/v1/gifs/search?q=' + p +'&api_key=dc6zaTOxFJmzC&limit=10';
+    $.ajax({ 
+      url: queryURL, 
+      method: 'GET'
+      })
+      .done(function(response){
+        console.log(response);
+        var results = response.data;
+        for (i=0; i<results.length; i++){
+          var gifDiv = $('<span class="items">')
+          var rating = results[i].rating;
+          var p = $('<p>').text('Rating: ' + rating);
+          var personImage = $('<img>');
+          personImage.attr('src', results[i].images.original_still.url);
+          personImage.attr('width', 200);
+          personImage.attr('data-still', results[i].images.original_still.url);
+          personImage.attr('data-animate', results[i].images.fixed_height.url);
+          console.log(personImage);
+          gifDiv.append(p)
+          gifDiv.append(personImage)
+          
+
+          $('#gifsAppearHere').prepend(gifDiv);
+        }
+        $('img').on('click', 
+          function(){
+            console.log(this);
+            var p = $(this).data('animate');
+            $(this).attr('src',p);
+          });
+        
+      });
+  });
+</script>
+</body>
+</html>
