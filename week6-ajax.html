@@ -6,7 +6,7 @@
 <body>
   
   <div id="buttons"></div>
-  <div id="gifsAppearHere"></div>
+  <span id="gifsAppearHere"></span>
   <div id="addActors">
   </div>
 
@@ -14,7 +14,7 @@
 <script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
 <script type="text/javascript">
 
-  var actorArray = ["arnold schwarzenegger", "michael j fox", "tom cruise", "bruce willis", "leonardo dicaprio"];
+  var actorArray = ["arnold schwarzenegger", "angelina jolie","michael j fox","julia roberts", "tom cruise", "sandra bullock", "bruce willis", "hilary swank","leonardo dicaprio","jodie foster"];
 
   for(i=0;i<actorArray.length;i++){
     var $a = $('<button>') 
@@ -48,7 +48,7 @@
           gifDiv.append(personImage)
           
 
-          $('#gifsAppearHere').prepend(gifDiv);
+          $('#gifsAppearHere').append(gifDiv);
         }
         $('img').on('click', 
           function(){
