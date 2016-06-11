@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Actors Giphy</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
 <body>
   
@@ -9,12 +10,26 @@
   <span id="gifsAppearHere"></span>
   <div id="addActors">
   </div>
-
+  <div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><strong>Add Employee</div>
+  <div class="panel-body">
+  <form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Employee Name</label>
+    <input type="text" class="form-control" id="employeeName" placeholder="Name">
+  </div>
+  <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+  </form>
+  </div>
+  </div>
+  
 
 <script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
 <script type="text/javascript">
 
   var actorArray = ["arnold schwarzenegger", "angelina jolie","michael j fox","julia roberts", "tom cruise", "sandra bullock", "bruce willis", "hilary swank","leonardo dicaprio","jodie foster"];
+
 
   for(i=0;i<actorArray.length;i++){
     var $a = $('<button>') 
@@ -22,6 +37,7 @@
     $a.text(actorArray[i]); 
     $('#buttons').append($a); 
   }
+
 
   $('button').on('click', function(){
     $('#gifsAppearHere').empty();
@@ -43,6 +59,7 @@
           personImage.attr('width', 200);
           personImage.attr('data-still', results[i].images.original_still.url);
           personImage.attr('data-animate', results[i].images.fixed_height.url);
+          personImage.attr('data-state', 'still');
           console.log(personImage);
           gifDiv.append(p)
           gifDiv.append(personImage)
@@ -52,13 +69,22 @@
         }
         $('img').on('click', 
           function(){
-            console.log(this);
-            var p = $(this).data('animate');
-            $(this).attr('src',p);
+            var p = $(this).data('state');
+            
+            if(p=='still'){
+              $(this).attr('src', $(this).data('animate'));
+              $(this).data('state', 'animate');
+            } else{
+              $(this).attr('src', $(this).data('still'));
+              $(this).data('state', 'still');
+            }
+
           });
         
       });
   });
+
+  createButtons();
 </script>
 </body>
 </html>
