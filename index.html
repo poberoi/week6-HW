@@ -5,19 +5,23 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
 <body>
-  
-  <div class="actorButtons" id="buttons"></div>
-  <div id="gifsAppearHere"></div>
-  <div id="addActors"></div>
-  <div class="panel panel-primary">
-    <div class="panel-body">
-      <form>
-        <div class="form-group">
-          <label for="addActor">Enter an Actor or Actress to create a button and see some magic happen</label>
-          <input type="text" class="form-control" id="actor" placeholder="Actor Name">
+  <div class="container">
+    <div class="actorButtons" id="buttons"></div>
+    <div class="container" id="mainSection">
+      <div id="gifsAppearHere"></div>
+    </div>
+    <div class="container" id="sideBar">
+      <div class="panel panel-primary">
+        <div class="panel-body">
+          <form>
+            <div class="form-group">
+              <label for="addActor">Enter an Actor or Actress to create a button and see some magic happen</label>
+              <input type="text" class="form-control" id="actor" placeholder="Actor Name">
+            </div>
+            <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+          </form>
         </div>
-        <button type="submit" class="btn btn-primary" id="submit">Submit</button>
-      </form>
+      </div>
     </div>
   </div>
 
