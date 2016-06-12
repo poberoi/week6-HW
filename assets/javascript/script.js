@@ -1,11 +1,11 @@
 $(document).on('ready', function(){
-  var actorArray = ["arnold schwarzenegger", "angelina jolie","michael j fox","julia roberts", "tom cruise", "sandra bullock", "bruce willis", "hilary swank","leonardo dicaprio","jodie foster"];
+  var actorArray = ["Arnold Schwarzenegger", "Angelina Jolie","Michael J Fox","Julia Roberts", "Tom Cruise", "Sandra Bullock", "Bruce Willis", "Hilary Swank","Leonardo Dicaprio","Jodie Foster"];
 
   var createButtons = function(){
     $('.actorButtons').empty();
     for(i=0;i<actorArray.length;i++){
       var $a = $('<button>') 
-      $a.attr('data-name', actorArray[i]);
+      $a.attr('data-name', actorArray[i].toLowerCase());
       $a.attr('class','btn btn-primary btn-actor')
       $a.text(actorArray[i]); 
       $('.actorButtons').append($a); 
@@ -43,7 +43,7 @@ $(document).on('ready', function(){
         var p = $('<p>').text('Rating: ' + rating);
         var personImage = $('<img>');
         personImage.attr('src', results[i].images.original_still.url);
-        personImage.attr('width', 300);
+        personImage.attr('width', 200);
         personImage.attr('data-still', results[i].images.original_still.url);
         personImage.attr('data-animate', results[i].images.fixed_height.url);
         personImage.attr('data-state', 'still');
